@@ -32,4 +32,9 @@ class Tabuleiro:
             return Tabuleiro.JOGADOR_0
         elif soma == 12:
             return Tabuleiro.JOGADOR_X
+        soma = self.matriz[0][2] + self.matriz[1][1] + self.matriz[2][0]
+        if soma == 3:
+            return Tabuleiro.JOGADOR_0
+        elif soma == 12:
+            return Tabuleiro.JOGADOR_X
         return Tabuleiro.DESCONHECIDO
