@@ -24,26 +24,40 @@ class JogadorIA(Jogador):
         for tipo in [self.tipo, 3 - self.tipo]:  # self.tipo = IA, 3-self.tipo = adversário
             # Checa linhas
             for l in range(3):
-                linha = [self.matriz[l][c] for c in range(3)]
-                if linha.count(tipo) == 2 and linha.count(Tabuleiro.DESCONHECIDO) == 1:
-                    c = linha.index(Tabuleiro.DESCONHECIDO)
+                soma = 0
+                for c in range(3):        
+                    soma += self.matriz[l][c]
+                #Se soma der 8 marque o quadrado restante na linha
+                if soma == 8: 
+                    c = self.matriz[l].index(Tabuleiro.DESCONHECIDO)
                     return (l, c)
             # Checa colunas
             for c in range(3):
-                coluna = [self.matriz[l][c] for l in range(3)]
-                if coluna.count(tipo) == 2 and coluna.count(Tabuleiro.DESCONHECIDO) == 1:
-                    l = coluna.index(Tabuleiro.DESCONHECIDO)
+                soma = 0
+                for l in range(3):
+                    soma += self.matriz[l][c]
+                #Se soma der 8 marque o quadrado restante na coluna
+                if soma == 8:
+                    l = [self.matriz[i][c] for i in range(3)].index(Tabuleiro.DESCONHECIDO)
                     return (l, c)
             # Checa diagonal principal
-            diagonal = [self.matriz[i][i] for i in range(3)]
-            if diagonal.count(tipo) == 2 and diagonal.count(Tabuleiro.DESCONHECIDO) == 1:
-                i = diagonal.index(Tabuleiro.DESCONHECIDO)
-                return (i, i)
+            for c in range(3):
+                soma = 0
+                for l in range(3):
+                    soma += self.matriz[l][l]
+                #Se soma der 8 marque o quadrado restante na diagonal principal
+                if soma == 8:
+                    i = [self.matriz[j][j] for j in range(3)].index(Tabuleiro.DESCONHECIDO)
+                    return (i, i)
             # Checa diagonal secundária
-            diagonal = [self.matriz[i][2-i] for i in range(3)]
-            if diagonal.count(tipo) == 2 and diagonal.count(Tabuleiro.DESCONHECIDO) == 1:
-                i = diagonal.index(Tabuleiro.DESCONHECIDO)
-                return (i, 2-i)
+            for c in range(3):
+                soma = 0
+                for l in range(3):
+                    soma += self.matriz[l][2-l]
+                #Se soma der 8 marque o quadrado restante na diagonal secundária
+                if soma == 8:
+                    i = [self.matriz[j][2-j] for j in range(3)].index(Tabuleiro.DESCONHECIDO)
+                    return (i, 2-i)
         #R2. Se houver uma jogada que crie duas sequências de duas marcações,use-a.
         for l, c in lista:
             # Simula a jogada
