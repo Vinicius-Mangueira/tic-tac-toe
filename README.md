@@ -21,9 +21,10 @@ Welcome to the **tic-tac-toe** repository, a Python implementation of the classi
 
 ## Overview
 
-This project offers a fully playable console-based Tic-Tac-Toe game in Python. You can play:
+*This project was developed as an assignment for the Data Structures course taught by Professor Gilberto Farias.*
 
-* **Human vs. Human**
+This project offers a fully playable console-based Tic-Tac-Toe game in Python. You can play only:
+
 * **Human vs. Computer** (AI)
 
 The computer opponent uses a set of prioritized heuristic rules (an expert system) to determine its moves.
@@ -33,12 +34,11 @@ The computer opponent uses a set of prioritized heuristic rules (an expert syste
 ## Features
 
 * Display of a 3×3 game board in the console
-* Two game modes:
+* Game mode:
 
-  * Human vs. Human
   * Human vs. Computer (AI)
 * Move validation and win/draw detection
-* Expert system-based AI with prioritized rules
+* Expert system-based AI with prioritized rules with prioritized rules
 
 ---
 
@@ -77,10 +77,9 @@ The computer opponent uses a set of prioritized heuristic rules (an expert syste
    ```bash
    python main.py
    ```
-2. Select the game mode:
 
-   * Enter **1** for Human vs. Human
-   * Enter **2** for Human vs. Computer
+2. When you run the game, it starts directly in Human vs. Computer mode.
+
 3. Choose your symbol (X or O) and make moves by entering a position number (1–9) according to the layout:
 
    ```plaintext
@@ -90,7 +89,8 @@ The computer opponent uses a set of prioritized heuristic rules (an expert syste
    -----------
     7 | 8 | 9
    ```
-4. Players alternate turns until one aligns three symbols or the board is full (draw).
+
+4. Players alternate turns until one aligns three symbols or the board is full (draw). until one aligns three symbols or the board is full (draw).
 
 ---
 
@@ -118,11 +118,15 @@ The AI uses the following prioritized heuristic rules. If a rule does not yield 
 ## Project Structure
 
 ```
-├── main.py      # Entry point and main game loop
-├── board.py     # Board representation and display
-├── player.py    # Human and AI player classes
-├── rules.py     # Heuristic rules for AI decisions
-└── utils.py     # Helper functions (validation, win checks)
+__pycache__/             # Python cache directory
+buttons.py               # Button management module for GUI inputs
+jogador.py               # Base player class
+jogador_humano.py        # Human player implementation
+jogador_ia.py            # AI (expert system) player implementation
+jogo_velha.py            # Core game logic and flow control
+main.py                  # Entry point and main game loop
+tabuleiro.py             # Board representation and logic
+tabuleiro_screen.py      # Board display (console or GUI rendering)
 ```
 
 ---
